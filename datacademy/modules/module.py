@@ -1,9 +1,14 @@
 """Module containing the module base class."""
+from pathlib import Path
+
 from .checker import DEFAULT_ADDRESS, DEFAULT_TIMEOUT, DEFAULT_URL, Checker, T
 
 
 class Module:
     """Base class for a module."""
+
+    RESOURCE_FOLDER = 'resources'
+
     def __init__(
         self,
         name: str,
@@ -48,3 +53,11 @@ class Module:
             answer (T): The answer.
         """
         self.checker.check(question, answer)
+
+    def get_resource_path(self, *path: str | Path) -> Path:
+        """Get the path to a resource.
+
+        Returns:
+            Path: Path within resource folder.
+        """
+        return Path(self.RESOURCE_FOLDER, *path)

@@ -39,4 +39,4 @@ jobs:
 
     - name: Analysing the code with Ruff
       run: |
-        poetry run ruff check xdconnects
+        poetry run ruff check datacademy

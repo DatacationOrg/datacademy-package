@@ -3,7 +3,7 @@
 from pydantic import BaseModel
 
 from .objects import ObjectModel
-from .types import ANSWER_TYPES, OBJECT_TYPES
+from .types import ANSWER_TYPES
 
 DEFAULT_MESSAGE_CORRECT: str = "That's correct!"
 """Default message to show for correct answers."""
@@ -42,7 +42,7 @@ class VerificationMessage(BaseModel):
             return VerificationMessage(message=message, obj=ObjectModel.create(obj))
         return VerificationMessage(message=message)
 
-    def get_object(self) -> OBJECT_TYPES:
+    def get_object(self) -> ANSWER_TYPES | None:
         """Get the object.
 
         Returns:

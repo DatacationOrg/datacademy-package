@@ -65,7 +65,7 @@ class ObjectModel(BaseModel):
 
         raise NotImplementedError(f'RequestObject is not implemented for {type(obj)}')
 
-    def get(self) -> OBJECT_TYPES:
+    def get(self) -> ANSWER_TYPES:
         """Get the object.
 
         Returns:
@@ -73,11 +73,9 @@ class ObjectModel(BaseModel):
         """
         match self.obj_type:
             case ObjectType.CSV:
-                check_isinstance(self.obj, dict)
-                return pd.DataFrame.from_dict(self.obj, orient=DF_ORIENT)
+                return pd.DataFrame.from_dict(check_isinstance(self.obj, dict), orient=DF_ORIENT)
             case ObjectType.NP_ARRAY:
-                check_isinstance(self.obj, list)
-                return np.array(self.obj)
+                return np.array(check_isinstance(self.obj, list))
             case ObjectType.DATETIME:
                 check_isinstance(self.obj, datetime)
             case ObjectType.BOOL:

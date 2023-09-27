@@ -3,7 +3,7 @@
 from pydantic import BaseModel
 
 from .objects import ObjectModel
-from .types import ANSWER_TYPES, OBJECT_TYPES
+from .types import ANSWER_TYPES
 
 
 class VerificationRequest(BaseModel):
@@ -32,7 +32,7 @@ class VerificationRequest(BaseModel):
         """
         return VerificationRequest(module=module, question=question, answer=ObjectModel.create(answer))
 
-    def get(self) -> OBJECT_TYPES:
+    def get(self) -> ANSWER_TYPES | None:
         """Get the given answer.
 
         Returns:

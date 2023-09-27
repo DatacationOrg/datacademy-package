@@ -11,8 +11,7 @@ from IPython.display import display
 from requests import Response
 
 from datacademy.models import VerificationMessage, VerificationRequest, VerificationResponse
-
-from .animation import Animation
+from datacademy.util.animation import TextAnimation
 
 T = TypeVar('T', float, int, datetime, str, list, dict, pd.DataFrame)
 """Type variable for supported data types to send."""
@@ -125,7 +124,7 @@ class Checker:
         def _animation(step: int) -> str:
             return '🔵 Checking your answer' + '.' * (step % 4)
 
-        animation = Animation(_animation, frequency=4)
+        animation = TextAnimation(_animation, frequency=4)
         try:
             animation.start()
             response = requests.request('POST', self.url, headers=headers, data=data, timeout=30)

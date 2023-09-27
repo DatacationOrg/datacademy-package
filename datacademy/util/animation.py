@@ -4,7 +4,7 @@ from threading import Thread
 from time import sleep, time
 
 
-class Animation(Thread):
+class TextAnimation(Thread):
     """Class to animate console text using a Thread."""
 
     def __init__(self, func: Callable[[int], str], frequency: int = 10) -> None:
@@ -49,7 +49,7 @@ class Animation(Thread):
         self.join()
 
     @staticmethod
-    def start_new(func: Callable[[int], str], frequency: int = 10) -> 'Animation':
+    def start_new(func: Callable[[int], str], frequency: int = 10) -> 'TextAnimation':
         """Create a new AnimationThread and immediately start it.
 
         Args:
@@ -59,12 +59,12 @@ class Animation(Thread):
         Returns:
             AnimationThread: Started AnimationThread.
         """
-        animation = Animation(func, frequency=frequency)
+        animation = TextAnimation(func, frequency=frequency)
         animation.start()
         return animation
 
     @staticmethod
-    def loop_list(loop_list: str | list[str], frequency: int = 10) -> 'Animation':
+    def loop_list(loop_list: str | list[str], frequency: int = 10) -> 'TextAnimation':
         """Create an animation by looping a list.
 
         Args:
@@ -77,4 +77,4 @@ class Animation(Thread):
         def _loop(step: int) -> str:
             return loop_list[step % len(loop_list)]
 
-        return Animation.start_new(_loop, frequency=frequency)
+        return TextAnimation.start_new(_loop, frequency=frequency)

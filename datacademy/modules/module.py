@@ -1,7 +1,7 @@
 """Module containing the module base class."""
 from pathlib import Path
 
-from .checker import DEFAULT_ADDRESS, DEFAULT_TIMEOUT, DEFAULT_URL, Checker, T
+from datacademy.checker.checker import DEFAULT_ADDRESS, DEFAULT_TIMEOUT, DEFAULT_URL, Checker, T
 
 
 class Module:

@@ -10,7 +10,7 @@ import requests
 from IPython.display import display
 from requests import Response
 
-from datacademy.models import VerificationMessage, VerificationRequest, VerificationResponse
+from datacademy.checker import VerificationMessage, VerificationRequest, VerificationResponse
 from datacademy.util.animation import TextAnimation
 
 T = TypeVar('T', float, int, datetime, str, list, dict, pd.DataFrame)

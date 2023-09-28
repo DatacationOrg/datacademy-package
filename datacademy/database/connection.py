@@ -53,16 +53,20 @@ class DatabaseConnection:
 
                 return pd.DataFrame(columns=columns, data=data)
 
-            if sql.lower().startswith('create'):
-                print('Table created successfully!')  # noqa: T201
-            elif sql.lower().startswith('insert'):
-                print('Data inserted successfully!')  # noqa: T201
-            elif sql.lower().startswith('update'):
-                print('Data record updated successfully!')  # noqa: T201
-            elif sql.lower().startswith('delete'):
-                print('Data record deleted successfully!')  # noqa: T201
-            elif sql.lower().startswith('drop'):
-                print('Table dropped successfully!')  # noqa: T201
+            first_command = sql.strip().lower().split(' ')[0]
+            match first_command:
+                case 'create':
+                    print('Table created successfully!')  # noqa: T201
+                case 'insert':
+                    print('Data inserted successfully!')  # noqa: T201
+                case 'update':
+                    print('Data record updated successfully!')  # noqa: T201
+                case 'delete':
+                    print('Data record deleted successfully!')  # noqa: T201
+                case 'drop':
+                    print('Table dropped successfully!')  # noqa: T201
+
+            connection.commit()
 
             return None
 

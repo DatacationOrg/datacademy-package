@@ -10,8 +10,10 @@ import requests
 from IPython.display import display
 from requests import Response
 
-from datacademy.checker import VerificationMessage, VerificationRequest, VerificationResponse
 from datacademy.util.animation import TextAnimation
+
+from .request import VerificationRequest
+from .response import VerificationMessage, VerificationResponse
 
 T = TypeVar('T', float, int, datetime, str, list, dict, pd.DataFrame)
 """Type variable for supported data types to send."""

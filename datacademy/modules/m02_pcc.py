@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from sklearn.datasets import load_diabetes
 
-from datacademy.modules.checker import DEFAULT_ADDRESS, DEFAULT_TIMEOUT, DEFAULT_URL
+from datacademy.checker import DEFAULT_ADDRESS, DEFAULT_TIMEOUT, DEFAULT_URL
 
 from .module import Module
 

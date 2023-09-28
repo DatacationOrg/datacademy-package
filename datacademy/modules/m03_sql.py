@@ -4,9 +4,9 @@ from datetime import datetime
 
 import pandas as pd
 
+from datacademy.checker import DEFAULT_ADDRESS, DEFAULT_TIMEOUT, DEFAULT_URL
 from datacademy.database import DatabaseConnection
 from datacademy.database.m03 import Base, Customer, Order, Product
-from datacademy.modules.checker import DEFAULT_ADDRESS, DEFAULT_TIMEOUT, DEFAULT_URL
 from datacademy.modules.module import Module
 
 DEFAULT_DB_LOCATION = 'database.db'

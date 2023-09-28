@@ -75,7 +75,7 @@ inline-quotes = "single"
 
 [tool.ruff.per-file-ignores]
 "datacademy/util/animation.py" = ["T201"]
-"datacademy/modules/checker.py" = ["T201"]
+"datacademy/checker/checker.py" = ["T201"]
 
 [tool.ruff.pydocstyle]
 convention = "google"

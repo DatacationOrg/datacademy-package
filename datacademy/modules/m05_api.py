@@ -65,90 +65,40 @@ class Module05(Module):
 
         Args:
             question (str): Question ID.
-            url (str): URL to get.
+            url (str): URL to use.
         """
         response: Response = self.__check_status(self.client.get(url), url)
         self.check(question, response.json())
 
+    def check_post(self, question:str, post_url: str, get_url: str) -> None:
+        """Check a POST request.
 
-# def test_get_customers():
-#     response = client.get('/get-customers/')
-#     assert response.status_code == 200
-#     assert response.json() == {
-#         '0': {
-#             'firstName': 'John',
-#             'lastName': 'Doe',
-#             'address': '1948 Conifer Drive'
-#             },
-#         '1': {
-#             'firstName': 'Arthur',
-#             'lastName': 'Holmes',
-#             'address': '2149 Stockert Hollow Road'
-#             },
-#         '2': {
-#             'firstName': 'Jamie',
-#             'lastName': 'Dean',
-#             'address': '4883 White Lane'
-#             }
-#         }
+        Args:
+            question (str): Question ID.
+            post_url (str): POST URL to use.
+            get_url (str): GET URL to use.
+        """
+        self.__check_status(self.client.post(post_url), post_url)
+        self.check_get(question, get_url)
 
+    def check_put(self, question:str, put_url: str, get_url: str) -> None:
+            """Check a PUT request.
 
-# def test_create_customer():
-#     data = {
-#         'firstName': 'Jan',
-#         'lastName': 'Janssen',
-#         'address': 'Kerkstraat 10'
-#            }
+            Args:
+                question (str): Question ID.
+                put_url (str): POST URL to use.
+                get_url (str): GET URL to use.
+            """
+            self.__check_status(self.client.put(put_url), put_url)
+            self.check_get(question, get_url)
 
-#     response = client.post('/create-customer/12?firstName=Jan&lastName=Janssen&address=Kerkstraat%2010')
+    def check_delete(self, question:str, delete_url: str, get_url: str) -> None:
+            """Check a PUT request.
 
-#     assert response.status_code == 200
-#     assert response.json() == data
-
-
-# def test_create_customer_auto_increment():
-#     response = client.get('/get-customers/?skip=0&limit=1000')
-#     keys_customers = list(response.json().keys())
-
-#     assert response.status_code == 200
-#     assert (int(keys_customers[-1]) - int(keys_customers[-2])) == 1
-
-
-# def test_update_customer_address():
-#     data = {'address': 'Ons Dorp 100'}
-
-#     response = client.put('/update-customer-address/1?address=Ons%20Dorp%20100')
-#     assert response.status_code == 200
-#     assert response.json()['address'] == data['address']
-#     assert client.get('/get-customer/1').json()['address'] == data['address']
-
-
-# def test_update_customer_address_by_name():
-#     data = {
-#         'firstName': 'John',
-#         'lastName': 'Doe',
-#         'address': 'Imaginary street 1'
-#         }
-
-#     response = client.put('/update-customer-address-by-name/?firstName=John&lastName=Doe&address=Imaginary%20street%201')
-
-#     assert response.status_code == 200
-#     assert response.json()['address'] == data['address']
-#     assert client.get(
-#         '/get-customer/0').json()['address'] == data['address']
-
-
-# def test_delete_customer():
-#     response = client.delete('/delete-customer/0')
-
-#     assert response.status_code == 200
-#     assert response.json() == {'Message': 'Customer 0 deleted successfully.'}
-#     assert 'Customer does not exists yet.' in client.get('/get-customer/0').json()
-
-
-# def test_delete_customer_by_name():
-#     response = client.delete('/delete-customer-by-name/?firstName=Jamie&lastName=Dean')
-
-#     assert response.status_code == 200
-#     assert response.json() == {'Message': 'Customer Jamie Dean deleted successfully.'}
-#     assert 'Customer does not exists yet.' in client.get('/get-customer/2').json()
+            Args:
+                question (str): Question ID.
+                delete_url (str): POST URL to use.
+                get_url (str): GET URL to use.
+            """
+            self.__check_status(self.client.delete(delete_url), delete_url)
+            self.check_get(question, get_url)

@@ -4,6 +4,7 @@ import json
 from collections.abc import Collection
 from datetime import datetime
 from typing import TypeVar
+import os
 
 import pandas as pd
 import requests
@@ -64,7 +65,12 @@ class Checker:
             server_address = 'https://' + server_address
 
         self.url = server_address + ('' if server_port is None else f':{server_port}') + server_url
-
+        datacademy_api = os.environ['DATACADEMY_API']
+        print(datacademy_api)
+        if datacademy_api is not None:
+            self.url = datacademy_api
+            
+        
     def check(
         self,
         question: str,

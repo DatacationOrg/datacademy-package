@@ -25,6 +25,8 @@ DEFAULT_ADDRESS = 'localhost'
 DEFAULT_URL = '/verify'
 """URL at address where verification requests should be sent."""
 
+DATACADEMY_SERVER_API = "https://datacademy-server.azurewebsites.net"
+
 DEFAULT_TIMEOUT = 30.0
 """Seconds before checking request will time out."""
 
@@ -60,13 +62,12 @@ class Checker:
 
 
         try:
-            response = requests.get("https://datacademy-server.azurewebsites.net/")
+            response = requests.get(DATACADEMY_SERVER_API)
             response.raise_for_status()  # Raise an HTTPError for bad responses (4xx and 5xx)
             # If the request was successful, store the URL in a variable
-            server_address = "https://datacademy-server.azurewebsites.net"
-            print(f"The URL {url} is valid.")
+            server_address = DATACADEMY_SERVER_API
         except requests.exceptions.RequestException as e:
-            print(f"Error accessing {url}: {e}")
+            print(f"Error accessing {DATACADEMY_SERVER_API}: {e}")
 
         if server_address == 'localhost':
             server_address = 'http://127.0.0.1'

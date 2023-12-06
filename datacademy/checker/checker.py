@@ -31,7 +31,6 @@ DEFAULT_TIMEOUT = 30.0
 ERROR = '🔴 ERROR:'
 """Start of error message."""
 
-
 class Checker:
     """Class that can be used at the Datacademy user to check the answers."""
 
@@ -59,17 +58,22 @@ class Checker:
         self.notebook = notebook
         self.timeout = timeout
 
+
+        try:
+            response = requests.get("https://datacademy-server.azurewebsites.net/")
+            response.raise_for_status()  # Raise an HTTPError for bad responses (4xx and 5xx)
+            # If the request was successful, store the URL in a variable
+            server_address = "https://datacademy-server.azurewebsites.net"
+            print(f"The URL {url} is valid.")
+        except requests.exceptions.RequestException as e:
+            print(f"Error accessing {url}: {e}")
+
         if server_address == 'localhost':
             server_address = 'http://127.0.0.1'
         elif not server_address.startswith('https://'):
             server_address = 'https://' + server_address
 
         self.url = server_address + ('' if server_port is None else f':{server_port}') + server_url
-        datacademy_api = os.environ['DATACADEMY_API']
-        print(datacademy_api)
-        if datacademy_api is not None:
-            self.url = datacademy_api
-            
         
     def check(
         self,

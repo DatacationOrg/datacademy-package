@@ -9,7 +9,7 @@ from datacademy.checker import DEFAULT_ADDRESS, DEFAULT_TIMEOUT, DEFAULT_URL
 from .module import Module
 
 
-class Module02(Module):
+class Module10(Module):
     """Class for module 10."""
 
     def __init__(

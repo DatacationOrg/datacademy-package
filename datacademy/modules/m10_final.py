@@ -1,4 +1,6 @@
 """Module containing the logic for module 10."""
+import pandas as pd
+
 from datacademy.checker import DEFAULT_ADDRESS, DEFAULT_TIMEOUT, DEFAULT_URL
 
 from .module import Module

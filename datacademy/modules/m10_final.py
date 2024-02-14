@@ -74,3 +74,11 @@ class Module10(Module):
 
         plt.legend(loc='upper right')
         plt.show()
+
+    def check_df(self, question: str, df: pd.DataFrame) -> None:
+        """Check the outcome of a query.
+
+        Args:
+            question (str): Question identifier.
+        """
+        self.check(question, df)

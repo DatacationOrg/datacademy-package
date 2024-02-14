@@ -80,5 +80,6 @@ class Module10(Module):
 
         Args:
             question (str): Question identifier.
+            df (pd.DataFrame): DataFrame containing the answer.
         """
         self.check(question, df)

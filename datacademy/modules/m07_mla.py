@@ -1,4 +1,4 @@
-"""Module containing the logic for module 10."""
+"""Module containing the logic for module 07."""
 
 import pandas as pd
 

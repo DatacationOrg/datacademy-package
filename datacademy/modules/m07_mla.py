@@ -29,7 +29,7 @@ class Module07(Module):
             notebook (bool, optional): Whether this checker is run in a notebook. Defaults to True.
         """
         super().__init__(
-            'M07_FINAL',
+            'M07_MLA',
             server_address=server_address,
             server_port=server_port,
             server_url=server_url,

@@ -7,8 +7,8 @@ from datacademy.checker import DEFAULT_ADDRESS, DEFAULT_TIMEOUT, DEFAULT_URL
 from .module import Module
 
 
-class Module10(Module):
-    """Class for module 10."""
+class Module09(Module):
+    """Class for module 09."""
 
     def __init__(
         self,
@@ -19,7 +19,7 @@ class Module10(Module):
         timeout: float = DEFAULT_TIMEOUT,
         notebook: bool = True
     ) -> None:
-        """Create a new module 10 instance.
+        """Create a new module 09 instance.
 
         Args:
             server_address (str, optional): Address of the server. Defaults to DEFAULT_ADDRESS.
@@ -29,7 +29,7 @@ class Module10(Module):
             notebook (bool, optional): Whether this checker is run in a notebook. Defaults to True.
         """
         super().__init__(
-            'M10_FINAL',
+            'M09_FINAL',
             server_address=server_address,
             server_port=server_port,
             server_url=server_url,

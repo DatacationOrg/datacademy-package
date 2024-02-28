@@ -59,13 +59,13 @@ class Checker:
         self.timeout = timeout
 
         try:
-            response = requests.get("https://proddatacademyapi.azurewebsites.net/")
+            response = requests.get('https://proddatacademyapi.azurewebsites.net/', timeout=60)
             response.raise_for_status()  # Raise an HTTPError for bad responses (4xx and 5xx)
             # If the request was successful, store the URL in a variable
-            server_address = "https://proddatacademyapi.azurewebsites.net"
-            print(f"The URL {server_address} is valid.")
+            server_address = 'https://proddatacademyapi.azurewebsites.net'
+            print(f'The URL {server_address} is valid.')
         except requests.exceptions.RequestException as e:
-            print(f"Error accessing {server_address}: {e}")
+            print(f'Error accessing {server_address}: {e}')
 
         if server_address == 'localhost':
             server_address = 'http://127.0.0.1'
